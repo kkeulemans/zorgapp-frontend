@@ -1,10 +1,10 @@
 import React from "react";
 
 
-function Button ({type, text, }){
+function Button ({type, text, onClick }){
 
     return (
-        <button type={type}>{text}</button>
+        <button type={type} onClick={onClick}>{text}</button>
     )
 }
 
