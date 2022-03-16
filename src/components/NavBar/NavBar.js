@@ -1,5 +1,6 @@
 import {NavLink} from "react-router-dom";
 import './NavBar.css'
+import logo from "C://Users/karli/WebstormProjects/zorgappkeulemans/src/assets/logo.png"
 
 function NavBar(){
 
@@ -9,6 +10,7 @@ function NavBar(){
 
         <div className="nav-container">
             <ul>
+                <img className="logo" src={logo}/>
                 <li>
                     <h4><NavLink className="nav" exact to="/" activeClassName="active-link">Home</NavLink>
                     </h4>

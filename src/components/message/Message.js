@@ -1,9 +1,11 @@
 import React from "react";
 import './Message.css'
+import NavBar from "../NavBar/NavBar";
 function Message ({submitHandler}){
 
     return(
         <>
+            <NavBar/>
             <section>
             <form onSubmit={submitHandler}>
 

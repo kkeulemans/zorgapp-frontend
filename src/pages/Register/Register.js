@@ -1,6 +1,7 @@
 import React from "react";
 import Input from "../../components/Input";
 import './Register.css'
+import NavBar from "../../components/NavBar/NavBar";
 
 function Register() {
     function handleSubmit(e) {

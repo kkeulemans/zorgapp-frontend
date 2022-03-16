@@ -2,6 +2,10 @@ ul{
     list-style: none;
     flex-basis: 550px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+}
+
+ul img {
+    width: 10%;
 }
