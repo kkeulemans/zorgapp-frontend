@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import logo from './logo.svg';
 import './App.css';
 import Message from "./components/message/Message";
 import Button from "./components/Buttons";
 import Input from "./components/Input";
 import Register from "./pages/Register/Register";
-import Login from "./pages/Login";
+import SignIn from "./pages/SignIn/SignIn";
 import {Route, Switch} from 'react-router-dom'
 import {Redirect} from "react-router-dom";
 import Profile from "./pages/Profile";
@@ -14,9 +14,11 @@ import AppointmentPage from "./pages/Appointment/AppointmentPage"
 import BerichtenOverview from   "./pages/BerichtenOverview/BerichtenOverview"
 import zorgapp from "./assets/zorgapp.png";
 import HomePage from "./pages/HomePage/HomePage";
+import Instellingen from "./pages/Instellingen/Instellingen";
+import {AuthContext} from "./context/AuthContext";
 
 function App() {
-    const [isAuthenticated, toggleIsAuthenticated] = useState(false);
+    const { isAuth } = useContext(AuthContext);
 
     return (
         <>
@@ -25,7 +27,7 @@ function App() {
                     <HomePage/>
                 </Route>
                 <Route path="/login">
-                <Login isAuth={isAuthenticated} toggleAuth={toggleIsAuthenticated} />
+                <SignIn isAuth />
                 </Route>
                 <Route path="/register">
                     <Register/>
@@ -35,10 +37,16 @@ function App() {
                 </Route>
                 <Route path="/berichten">
                     {/*BEVEILIGDE ROUTE*/}
-
+                    <BerichtenOverview/>
                 </Route>
                 <Route path="/appointment">
                     <AppointmentPage/>
+                </Route>
+                <Route path="/profile">
+                    <Profile/>
+                </Route>
+                <Route path="/instellingen">
+                    <Instellingen/>
                 </Route>
             </Switch>
         </>

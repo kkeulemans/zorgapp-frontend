@@ -1,3 +1,15 @@
 #logo{
-    width: 100%
+    width: 100%;
+    position: center;
+}
+.links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+button{
+    alignment: center;
+    margin: 8px;
+    padding: 8px;
+    text-underline-mode: off;
 }

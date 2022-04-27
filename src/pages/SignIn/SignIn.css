@@ -1,0 +1,24 @@
+section{
+    display: grid;
+    flex-direction: row;
+}
+h3{
+    text-align: center;
+    order: 1;
+}
+
+img {
+    alignment: center;
+    width: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    order: 2;
+}
+form{
+    order: 3;
+    text-alignment: center;
+}
+
+Button {
+    order: 4;
+}
