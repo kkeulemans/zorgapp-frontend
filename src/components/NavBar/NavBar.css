@@ -1,11 +1,32 @@
 ul{
     list-style: none;
-    flex-basis: 550px;
-    display: flex;
+    display: grid;
     justify-content: space-around;
-    align-items: center;
+    grid-auto-flow: row;
+    grid-column: 6;
+    grid-row: 1;
+    grid-template-areas:
+        "1 2 3 4 5 6 ";
 }
 
 ul img {
     width: 10%;
+    grid-area: 1;
+    margin: 5px
+}
+#home {
+    grid-area: 2
+}
+#berichten{
+    grid-area: 3;
+}
+
+#profile{
+    grid-area: 4;
+}
+#instellingen{
+    grid-area: 5;
+}
+#appointment{
+   grid-area: 6;
 }

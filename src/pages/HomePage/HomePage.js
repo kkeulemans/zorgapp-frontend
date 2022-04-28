@@ -28,8 +28,8 @@ function HomePage(){
     return(
         <>
             <section>
-            <img src={zorgapp} alt="ZorgApp logo"/>
 
+                <img src={zorgapp} alt="ZorgApp logo"/>
 
                 <div className="links">
                 <button  className="link"><h4><NavLink to="/login"  activeClassName="active-link" >Login</NavLink></h4></button>

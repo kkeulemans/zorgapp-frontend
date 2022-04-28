@@ -11,12 +11,13 @@ import {Redirect} from "react-router-dom";
 import Profile from "./pages/Profile";
 import NavBar from "./components/NavBar/NavBar";
 import AppointmentPage from "./pages/Appointment/AppointmentPage"
-import BerichtenOverview from   "./pages/BerichtenOverview/BerichtenOverview"
+import BerichtenOverview from "./pages/MessageOverview/BerichtenOverview"
 import zorgapp from "./assets/zorgapp.png";
 import HomePage from "./pages/HomePage/HomePage";
 import Instellingen from "./pages/Instellingen/Instellingen";
 import {AuthContext} from "./context/AuthContext";
-
+import MessageOverview from "./pages/MessageOverview/BerichtenOverview";
+import NewMessage from "./pages/NewMessage/NewMessage";
 function App() {
     const { isAuth } = useContext(AuthContext);
 
@@ -33,11 +34,11 @@ function App() {
                     <Register/>
                 </Route>
                 <Route path="/message">
-                    <Message/>
+                    <NewMessage/>
                 </Route>
                 <Route path="/berichten">
                     {/*BEVEILIGDE ROUTE*/}
-                    <BerichtenOverview/>
+                    <MessageOverview/>
                 </Route>
                 <Route path="/appointment">
                     <AppointmentPage/>
@@ -47,6 +48,10 @@ function App() {
                 </Route>
                 <Route path="/instellingen">
                     <Instellingen/>
+                </Route>
+                    <Route path="/messages/new">
+                        <NewMessage/>
+
                 </Route>
             </Switch>
         </>

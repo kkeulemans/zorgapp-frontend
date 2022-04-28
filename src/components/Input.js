@@ -1,6 +1,6 @@
 import React from "react";
 
-function Input ({name, id, type, text}){
+function Input ({name, id, type, text,value,action}){
 
     return(
         <label htmlFor={name}>
@@ -9,6 +9,8 @@ function Input ({name, id, type, text}){
                 type={type}
                 name={name}
                 id={id}
+                value={value}
+                onChange={action}
             />
         </label>
     )

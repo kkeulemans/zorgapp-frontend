@@ -3,3 +3,7 @@ section{
     margin: 200px;
     padding: 50px;
 }
+
+p{
+    text-align: right;
+}

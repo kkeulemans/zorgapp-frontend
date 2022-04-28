@@ -2,6 +2,8 @@ import './BerichtenOverview.css'
 import axios from "axios";
 import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../context/AuthContext";
+import NavBar from "../../components/NavBar/NavBar";
+import "./BerichtenOverview.css"
 
 
 function BerichtenOverview() {
@@ -37,11 +39,11 @@ function BerichtenOverview() {
 
     return (
         <>
+            <NavBar/>
             <h3>Bericht Overzicht</h3>
             <section>
-                <p>{messages.map((message) =><article key={message}> {message}</article>)}</p>
+                <div>{messages.map((message) =><article key={message}><b> {message}</b></article>)}</div>
             </section>
-            <section></section>
 
         </>)
 }
