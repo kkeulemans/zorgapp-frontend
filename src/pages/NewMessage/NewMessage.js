@@ -1,5 +1,6 @@
 import NavBar from "../../components/NavBar/NavBar";
 import Message from "../../components/message/Message";
+import "./NewMessage.css"
 import axios from "axios";
 import {useState} from "react";
 
@@ -7,12 +8,87 @@ function NewMessage() {
     const token = localStorage.getItem("token");
     const [title, setTitle] = useState();
     const [content, setContent] = useState();
-    const [selectedFile, setSelectedFile] = useState([]);
-    const formData = new FormData();
+    const [selectedFile, setSelectedFile] = useState('');
+    const [receiver, setReceiver] = useState('')
+    const [receiverId, setReceiverId] = useState(0);
+    const sender = localStorage.getItem("id");
 
-    async function sendMessage(token){
-        try{
-           const response =  await axios.post("http://localhost:8080/messages/new", {
+    const convertToBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+
+            fileReader.onload = () => {
+                resolve(fileReader.result);
+            };
+
+            fileReader.onerror = (error) => {
+                reject(error);
+            };
+        });
+    };
+
+
+    async function addAttachment(token, messageId, data) {
+        try {
+            await axios.post(`http://localhost:8080/messages/${messageId}/attachment`, {
+                data
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    async function addToSender(messageId, senderId, token) {
+
+        try {
+            await axios.post(`http://localhost:8080/${messageId}/${senderId}`, {}, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+        } catch (e) {
+            console.error(e);
+        }
+
+    }
+
+    async function findReceiver(receiver, token) {
+        try {
+            const response = await axios.get(`http://localhost:8080/users/${receiver}/account`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            console.log(receiverId)
+            setReceiverId(response.data.id)
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    async function addToReceiver(receiverId, messageId, token) {
+      if(receiverId > 0){ try {
+            await axios.post(`http://localhost:8080/${messageId}/${receiverId}`, {}, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+        } catch (e) {
+            console.error(e);
+        }
+    }}
+
+async function sendMessage(token, data) {
+        try {
+            const response = await axios.post("http://localhost:8080/messages/new", {
                 title: title,
                 body: content,
             }, {
@@ -21,49 +97,41 @@ function NewMessage() {
                     Authorization: `Bearer ${token}`,
                 },
             })
-            formData.append("file", selectedFile);
-            const id = response.data.id + 1
+            const id = response.data.id
             console.log(id);
-            addAttachment(token, id);
-        }
-        catch (e){
+
+            addAttachment(token, id, data);
+            addToSender(id, sender, token);
+            findReceiver(receiver, token)
+            addToReceiver(receiverId, id, token)
+        } catch (e) {
             console.error(e);
         }
     }
 
-    async function addAttachment(token,messageId){
-        await axios.post(`http://localhost:8080/messages/${messageId}/attachment`, {
-            formData
-        }, {
-            headers: {
-               // "Content-Type": "multipart/form-data; boundary=&",
-                Authorization: `Bearer ${token}`,
-            },
-        })
-    }
-
-    function submitHandler(e){
+    async function submitHandler(e) {
         e.preventDefault();
-
-
+        const image = await convertToBase64(selectedFile)
+        console.log(image)
         console.log(title);
         console.log(content);
-        console.log(selectedFile)
-        sendMessage(token);
+        sendMessage(token, image);
+
 
     }
+
     return (
         <>
-        <NavBar/>
+            <NavBar/>
 
-                <Message placeholder="Bericht intypen..." content={content}
-                         title={title} submitHandler={submitHandler}
-                         setContent={(e) => setContent(e.target.value)}
-                         setTitle={(e) => setTitle((e.target.value))}
-                         //file={selectedFile}
-                         setFile={(e) => setSelectedFile(e.target.files[0])}
-                />
-            </>
+            <Message placeholder="Bericht intypen..." content={content}
+                     title={title} submitHandler={submitHandler}
+                     setContent={(e) => setContent(e.target.value)}
+                     setTitle={(e) => setTitle((e.target.value))}
+                     setFile={(e) => setSelectedFile(e.target.files[0])} receiver={receiver}
+                     setReceiver={(e) => setReceiver(e.target.value)}
+            />
+        </>
     )
 }
 

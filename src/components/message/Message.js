@@ -1,24 +1,33 @@
 import React from "react";
 import './Message.css'
-import NavBar from "../NavBar/NavBar";
-function Message ({submitHandler,title, content, placeholder, setContent, setTitle,file,setFile}){
-    return(
+
+function Message({submitHandler, title, content, placeholder, setContent, setTitle, receiver,setReceiver, setFile}) {
+
+
+    return (
         <>
-            <section>
-            <form onSubmit={submitHandler}>
 
-                <textarea id="title" value={title} placeholder="Bericht Titel" cols="100" rows="5" onChange={setTitle}/>
-                <textarea id="message" cols="100" rows="70" placeholder={placeholder}
-                          value={content} onChange={setContent}/>
-                <button type="submit" >Stuur</button>
-                <input type="file" value={file} onChange={setFile}/>
+            <article>
+                <form onSubmit={submitHandler}>
+                    <p>
+                       Naar: <input type="text" value={receiver} onChange={setReceiver} /></p>
+                        <p>
+                        <textarea id="message-title" value={title} placeholder="Bericht Titel" cols="80" rows="4"
+                                  onChange={setTitle}/></p>
+
+                    <p>       <textarea id="message-content" cols="80" rows="50" placeholder={placeholder}
+                                        value={content} onChange={setContent}/></p>
+                        <input type="file" id="file" onChange={setFile}/>
+                        <p></p>
+                        <button type="submit">Stuur</button>
 
 
-            </form>
+                </form>
 
+            </article>
 
-            </section>
         </>
     )
 }
+
 export default Message;

@@ -1,12 +1,12 @@
-import React, { createContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, {createContext, useEffect, useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import axios from 'axios';
 import {get} from "react-hook-form";
 
 export const AuthContext = createContext({});
 
-function AuthContextProvider({ children }) {
+function AuthContextProvider({children}) {
     const [isAuth, toggleIsAuth] = useState({
         isAuth: false,
         user: null,
@@ -15,19 +15,19 @@ function AuthContextProvider({ children }) {
     });
     const history = useHistory();
     const [firstName, toggleFirstName] = useState();
-    const[surname, setSurname] = useState();
+    const [surname, setSurname] = useState();
     const [birthdate, setBirthdate] = useState();
     const [sex, setSex] = useState();
     const [address, setAddress] = useState();
     const [account, setAccount] = useState();
-    const [array,setArray] = useState({});
+    const [array, setArray] = useState({});
     // MOUNTING EFFECT
     useEffect(() => {
         const token = localStorage.getItem('token');
 
         if (token) {
             const decoded = jwt_decode(token);
-           fetchUserData(decoded.sub, token);
+            fetchUserData(decoded.sub, token);
         } else {
             toggleIsAuth({
                 isAuth: false,
@@ -73,6 +73,7 @@ function AuthContextProvider({ children }) {
                 user: {
                     username: result.data.username,
                     email: result.data.email,
+                    apikey: result.data.apikey
                 },
                 status: 'done',
             });
@@ -91,7 +92,6 @@ function AuthContextProvider({ children }) {
             });
         }
     }
-
 
 
     const contextData = {

@@ -1,14 +1,11 @@
 import React, {useContext, useEffect, useState} from "react";
-import Button from "../../components/Buttons";
-import {useHistory} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 import zorgapp from "../../assets/zorgapp.png"
 import {AuthContext} from "../../context/AuthContext";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
 import './SignIn.css'
 
 function SignIn(){
-    const history = useHistory();
     const source = axios.CancelToken.source();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -44,10 +41,10 @@ function SignIn(){
     }
         return(
         <>
-        <section>
+        <article>
 
-            <img src={zorgapp} alt="zorgapp logo"/>
-
+            <img id="logo" src={zorgapp} alt="zorgapp logo"/>
+            <div>
             <form onSubmit={nextPage}>
                 <label htmlFor="username-field">
                     <input
@@ -73,9 +70,10 @@ function SignIn(){
                 <button
                     type="submit"
                     className="form-button">Login</button>
-            </form>
-            <p></p>
-        </section>
+            </form></div>
+
+            <NavLink id="register" to="/register">Registreren</NavLink>
+        </article>
 
 
 

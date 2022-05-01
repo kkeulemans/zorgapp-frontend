@@ -1,0 +1,22 @@
+article {
+    border-style: solid;
+    margin: 10px;
+    text-align: right;
+}
+
+h3 {
+    text-align: left;
+}
+
+form {
+    text-align: left;
+
+}
+
+div {
+    margin: 10px;
+}
+
+p {
+    text-align: right;
+}

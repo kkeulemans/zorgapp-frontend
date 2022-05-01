@@ -1,32 +1,51 @@
-ul{
-    list-style: none;
-    display: grid;
-    justify-content: space-around;
-    grid-auto-flow: row;
-    grid-column: 6;
-    grid-row: 1;
-    grid-template-areas:
-        "1 2 3 4 5 6 ";
+.nav-container {
+    display: flex;
+    grid-template-row: 1px;
+    grid-template-areas: "1 ......2... 4...... ..5 ........6....7";
+    justify-items: left;
+    justify-content: flex-start;
+    margin: 0px;
+    width: 2500px;
 }
 
-ul img {
-    width: 10%;
-    grid-area: 1;
-    margin: 5px
+a.nav {
+    margin: 50px;
 }
+
 #home {
-    grid-area: 2
-}
-#berichten{
-    grid-area: 3;
+    grid-area: 2;
+    list-style: none;
 }
 
-#profile{
+#berichten {
+    grid-area: 3;
+    list-style: none;
+}
+
+#profile {
     grid-area: 4;
+    list-style: none;
 }
-#instellingen{
+
+#instellingen {
     grid-area: 5;
+    list-style: none;
 }
-#appointment{
-   grid-area: 6;
+
+#appointment {
+    grid-area: 6;
+    list-style: none;
+    alignment: left;
 }
+
+.logo {
+    grid-area: 1;
+    width: 4%;
+    alignment: left;
+}
+
+button{
+    grid-area: 7;
+    height: 30px;
+}
+

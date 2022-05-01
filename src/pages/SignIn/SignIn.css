@@ -1,13 +1,14 @@
-section{
+article{
     display: grid;
     flex-direction: row;
+    border-color: #282c34;
 }
 h3{
     text-align: center;
     order: 1;
 }
 
-img {
+#logo {
     alignment: center;
     width: 100%;
     flex-grow: 1;
@@ -16,9 +17,24 @@ img {
 }
 form{
     order: 3;
-    text-alignment: center;
+    border-color: #282c34;
+    justify-content: stretch;
 }
 
 Button {
     order: 4;
+}
+
+#register {
+    text-align: left;
+    order: 5;
+    text-decoration-color: #282c34;
+    margin: 0px;
+    padding: 0px;
+    text-underline: #282c34;
+}
+
+div {
+    order: 2;
+    align-content: center;
 }

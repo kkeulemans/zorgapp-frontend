@@ -3,66 +3,91 @@ import Input from "../../components/Input";
 import React, {useEffect, useState} from "react";
 import "./AppointmentPage.css"
 import axios from "axios";
-function AppointmentPage(){
+
+function AppointmentPage() {
     const token = localStorage.getItem("token");
     const [date, setDate] = useState('dd-mm-yyyy');
     const [time, setTime] = useState('00:00');
+    const [appointmentId, setAppointmentId] = useState(0);
     const source = axios.CancelToken.source();
-
+    const id = localStorage.getItem("id");
     useEffect(() => {
         return function cleanup() {
             source.cancel();
         }
     }, []);
-    async function setAppointment(token){
-        try{
-            await axios.post("http://localhost:8080/appointments/new", {
+
+    async function addToAccount(token, id, appointmentId) {
+        try {
+            await axios.put(`http://localhost:8080/account/${id}/appointment/${appointmentId}/`, {}, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+        } catch (e) {
+        }
+    }
+
+    async function setAppointment(token) {
+        try {
+            const response = await axios.post("http://localhost:8080/appointments/new", {
                 date: date,
                 time: time,
-            },{ cancelToken: source.token,
+            }, {
+                cancelToken: source.token,
                 headers: {
-                "Content-Type": "application/json",
+                    "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
-            }})
+                }
+            })
+
+            setAppointmentId(response.data.id);
 
 
-        }
-        catch (e){
+        } catch (e) {
             console.error(e)
         }
 
     }
+
     function handleSubmit(e) {
-       e.preventDefault()
+        e.preventDefault()
         console.log(time)
         console.log(date)
-    setAppointment(token)
-
+        setAppointment(token)
+        addToAccount(token, id, appointmentId)
     }
-    return(<>
+
+    return (
+        <>
         <NavBar/>
-    <h1>Maak een afspraak</h1>
+        <div>
+            <article>
+                <h3>Afspraak Maken</h3>
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="appointment-date-field">
+                        <p>  Datum </p>
+                        <input name="appointment-date" id="appointment-date"
+                                            type="date"
+                                            value={date}
+                                            onChange={(e) => setDate(e.target.value)}/>
+                    </label>
+                    <p></p>
 
-        <section>
-            <h3>Afspraak Maken</h3>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="appointment-date-field">
-                    <Input name="appointment-date" id="appointment-date"
-                           type="date" text="Datum: "
-                           value={date}
-                           action={(e) => setDate(e.target.value)}
-                    /></label>
-                <p></p>
-                <label htmlFor="appointment-time"> <Input name="appointment-time" id="appointment-time" type= "time" text=" Tijd: "
-                       value={time}
-                       action={(e) => setTime(e.target.value)}
-                ></Input></label>
-                <p></p>
-                <button type="submit">Bevestig</button>
-            </form>
+                    <p>Tijd</p>
+                    <label htmlFor="appointment-time"> <input name="appointment-time" id="appointment-time" type="time"
+                                                              value={time}
+                                                              onChange={(e) => setTime(e.target.value)}
+                    ></input></label>
+                    <p>
+                    <button type="submit">Bevestig</button></p>
+                </form>
 
-        </section>
-
+            </article>
+        </div>
     </>)
 }
+
 export default AppointmentPage

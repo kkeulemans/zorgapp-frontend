@@ -1,9 +1,24 @@
-section{
-
-    margin: 200px;
-    padding: 50px;
+article {
+    border-width: 2px;
+    margin: 100px;
+    display: grid;
+    alignment: left;
 }
 
-p{
-    text-align: right;
+textarea {
+    resize: none;
+    fontsize: 30px;
+    alignment: center;
+}
+
+div {
+    margin: 100px;
+}
+
+#file {
+    alignment: left;
+}
+
+input {
+    align-self: center;
 }

@@ -1,14 +1,20 @@
-section{
+#overview {
     border-style: solid;
     border-width: 2px;
-
+    border-color: black;
 }
-
-article{
+article {
     list-style: none;
-    margin: 5px;
-    padding: 15px;
+    margin: 20px;
+    padding: 25px;
     border-bottom: solid;
     border-color: grey;
     border-width: 2px;
+    text-align: left;
+}
+
+
+img {
+    width: 5%;
+    alignment: right;
 }

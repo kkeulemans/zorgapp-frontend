@@ -1,14 +1,10 @@
 import React, {useContext, useState} from "react";
-import logo from './logo.svg';
 import './App.css';
-import Message from "./components/message/Message";
-import Button from "./components/Buttons";
-import Input from "./components/Input";
+
 import Register from "./pages/Register/Register";
 import SignIn from "./pages/SignIn/SignIn";
 import {Route, Switch} from 'react-router-dom'
-import {Redirect} from "react-router-dom";
-import Profile from "./pages/Profile";
+import Profile from "./pages/Profile/Profile";
 import NavBar from "./components/NavBar/NavBar";
 import AppointmentPage from "./pages/Appointment/AppointmentPage"
 import BerichtenOverview from "./pages/MessageOverview/BerichtenOverview"
@@ -18,6 +14,10 @@ import Instellingen from "./pages/Instellingen/Instellingen";
 import {AuthContext} from "./context/AuthContext";
 import MessageOverview from "./pages/MessageOverview/BerichtenOverview";
 import NewMessage from "./pages/NewMessage/NewMessage";
+import ClientRegister from "./pages/ClientRegister/ClientRegister";
+import HuisartsRegister from "./pages/HuisartsRegister/HuisartsRegister";
+import Message from "./pages/Message/Message";
+import PrivateRoute from "./components/PrivateRoute";
 function App() {
     const { isAuth } = useContext(AuthContext);
 
@@ -28,31 +28,24 @@ function App() {
                     <HomePage/>
                 </Route>
                 <Route path="/login">
-                <SignIn isAuth />
+                <SignIn  />
                 </Route>
                 <Route path="/register">
                     <Register/>
                 </Route>
-                <Route path="/message">
-                    <NewMessage/>
+                <Route path="/huisarts">
+                    <HuisartsRegister/>
                 </Route>
-                <Route path="/berichten">
-                    {/*BEVEILIGDE ROUTE*/}
-                    <MessageOverview/>
+                <Route path="/client">
+                    <ClientRegister/>
                 </Route>
-                <Route path="/appointment">
-                    <AppointmentPage/>
-                </Route>
-                <Route path="/profile">
-                    <Profile/>
-                </Route>
-                <Route path="/instellingen">
-                    <Instellingen/>
-                </Route>
-                    <Route path="/messages/new">
-                        <NewMessage/>
+                <PrivateRoute path="/message" boolean={isAuth} children=<NewMessage/>/>
+                <PrivateRoute exact path="/berichten" boolean={isAuth} children=<MessageOverview/>/>
+                <PrivateRoute path="/messages/:messageId" boolean={isAuth} children=<Message/>/>
+                <PrivateRoute path="/appointment" boolean={isAuth} children=<AppointmentPage/>/>
+                <PrivateRoute path="/profile" boolean={isAuth} children=<Profile/>/>
+                <PrivateRoute path="/instellingen" boolean={isAuth} children=<Instellingen/>/>
 
-                </Route>
             </Switch>
         </>
     );
