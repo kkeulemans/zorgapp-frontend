@@ -1,6 +1,5 @@
 import React, {useContext, useState} from "react";
 import './App.css';
-
 import Register from "./pages/Register/Register";
 import SignIn from "./pages/SignIn/SignIn";
 import {Route, Switch} from 'react-router-dom'
@@ -10,7 +9,6 @@ import AppointmentPage from "./pages/Appointment/AppointmentPage"
 import BerichtenOverview from "./pages/MessageOverview/BerichtenOverview"
 import zorgapp from "./assets/zorgapp.png";
 import HomePage from "./pages/HomePage/HomePage";
-import Instellingen from "./pages/Instellingen/Instellingen";
 import {AuthContext} from "./context/AuthContext";
 import MessageOverview from "./pages/MessageOverview/BerichtenOverview";
 import NewMessage from "./pages/NewMessage/NewMessage";
@@ -44,7 +42,6 @@ function App() {
                 <PrivateRoute path="/messages/:messageId" boolean={isAuth} children=<Message/>/>
                 <PrivateRoute path="/appointment" boolean={isAuth} children=<AppointmentPage/>/>
                 <PrivateRoute path="/profile" boolean={isAuth} children=<Profile/>/>
-                <PrivateRoute path="/instellingen" boolean={isAuth} children=<Instellingen/>/>
 
             </Switch>
         </>

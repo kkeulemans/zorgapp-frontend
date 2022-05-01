@@ -43,17 +43,16 @@ function BerichtenOverview() {
         getMessages(account, token);
     }, [account]);
 
-    const titles = messages.map((message) => <article key={message.title}><b>
-        <Link to={`/messages/${message.id}`}>{message.title}</Link></b><p></p></article>)
+    const titles = messages.map((message) => <section key={message.title}><b>
+        <Link to={`/messages/${message.id}`}>{message.title}</Link></b><p>Afzender</p></section>)
     return (
         <>
             <NavBar/>
             <p></p>
             <h3>Bericht Overzicht</h3>
             <article id="overview">
-                <div>
-                    {titles}</div>
 
+                    {titles}
                 <Buttons text="Nieuw Bericht" path={"/message"}/>
             </article>
         </>)

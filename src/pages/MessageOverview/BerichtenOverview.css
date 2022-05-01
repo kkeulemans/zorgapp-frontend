@@ -7,14 +7,17 @@ article {
     list-style: none;
     margin: 20px;
     padding: 25px;
-    border-bottom: solid;
-    border-color: grey;
-    border-width: 2px;
     text-align: left;
+    border-bottom: 4px outset;
 }
 
 
 img {
     width: 5%;
     alignment: right;
+}
+
+section{
+    border-style: solid;
+
 }
