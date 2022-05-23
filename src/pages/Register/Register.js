@@ -23,7 +23,6 @@ function Register() {
     }
 
     function onFormSubmit(data) {
-        console.log(data.email);
         registerUser(data)
 
     }

@@ -8,7 +8,6 @@ function AppointmentPage() {
     const token = localStorage.getItem("token");
     const [date, setDate] = useState('dd-mm-yyyy');
     const [time, setTime] = useState('00:00');
-    const [appointmentId, setAppointmentId] = useState(0);
     const source = axios.CancelToken.source();
     const id = localStorage.getItem("id");
     useEffect(() => {
@@ -42,8 +41,7 @@ function AppointmentPage() {
                     Authorization: `Bearer ${token}`,
                 }
             })
-
-            setAppointmentId(response.data.id);
+            localStorage.setItem('appointmentId', response.data.id);
 
 
         } catch (e) {
@@ -54,9 +52,8 @@ function AppointmentPage() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        console.log(time)
-        console.log(date)
         setAppointment(token)
+        const appointmentId = localStorage.getItem('appointmentId')
         addToAccount(token, id, appointmentId)
     }
 

@@ -30,7 +30,6 @@ function ClientRegister(){
         })
 
         key = response.data.apikey
-        console.log(key);
     }
 
     async function addAuthority(apikey, username){
@@ -58,7 +57,7 @@ function ClientRegister(){
 
     function onFormSubmit(data) {
        username = data.email
-        console.log(data.email);
+
 
         registerUser(data)
         addAuthority(key, username);

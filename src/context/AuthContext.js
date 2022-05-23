@@ -3,6 +3,7 @@ import {useHistory} from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import axios from 'axios';
 import {get} from "react-hook-form";
+import checkJWT from '../helpers/checkJWT'
 
 export const AuthContext = createContext({});
 
@@ -10,22 +11,15 @@ function AuthContextProvider({children}) {
     const [isAuth, toggleIsAuth] = useState({
         isAuth: false,
         user: null,
-        account: null,
         status: 'pending',
     });
     const history = useHistory();
-    const [firstName, toggleFirstName] = useState();
-    const [surname, setSurname] = useState();
-    const [birthdate, setBirthdate] = useState();
-    const [sex, setSex] = useState();
-    const [address, setAddress] = useState();
-    const [account, setAccount] = useState();
-    const [array, setArray] = useState({});
+
     // MOUNTING EFFECT
     useEffect(() => {
         const token = localStorage.getItem('token');
 
-        if (token) {
+        if (token && checkJWT) {
             const decoded = jwt_decode(token);
             fetchUserData(decoded.sub, token);
         } else {
@@ -53,7 +47,6 @@ function AuthContextProvider({children}) {
             status: 'done',
         });
 
-        console.log('Gebruiker is uitgelogd!');
         history.push('/');
     }
 
@@ -66,7 +59,6 @@ function AuthContextProvider({children}) {
                 },
             });
 
-            // zet de gegevens in de state
             toggleIsAuth({
                 ...isAuth,
                 isAuth: true,
@@ -84,7 +76,6 @@ function AuthContextProvider({children}) {
 
         } catch (e) {
             console.error(e);
-            // ging er iets mis? Plaatsen we geen data in de state
             toggleIsAuth({
                 isAuth: false,
                 user: null,
@@ -97,10 +88,8 @@ function AuthContextProvider({children}) {
     const contextData = {
         isAuth: isAuth.isAuth,
         user: isAuth.user,
-        account: account,
         login: login,
         logout: logout,
-        fetchUserData: fetchUserData,
     };
 
     return (

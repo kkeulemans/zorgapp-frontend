@@ -48,7 +48,7 @@ function NewMessage() {
     async function addToSender(messageId, senderId, token) {
 
         try {
-            await axios.post(`http://localhost:8080/${messageId}/${senderId}`, {}, {
+            await axios.put(`http://localhost:8080/account/${senderId}/message/${messageId}`, {}, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -67,8 +67,8 @@ function NewMessage() {
                     Authorization: `Bearer ${token}`,
                 },
             })
-            console.log(receiverId)
             setReceiverId(response.data.id)
+            addToReceiver(receiverId, receiverId, token)
         } catch (e) {
             console.error(e);
         }
@@ -76,7 +76,7 @@ function NewMessage() {
 
     async function addToReceiver(receiverId, messageId, token) {
       if(receiverId > 0){ try {
-            await axios.post(`http://localhost:8080/${messageId}/${receiverId}`, {}, {
+            await axios.put(`http://localhost:8080/account/${receiverId}/message/${messageId}`, {}, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -98,12 +98,11 @@ async function sendMessage(token, data) {
                 },
             })
             const id = response.data.id
-            console.log(id);
 
             addAttachment(token, id, data);
             addToSender(id, sender, token);
             findReceiver(receiver, token)
-            addToReceiver(receiverId, id, token)
+
         } catch (e) {
             console.error(e);
         }
@@ -112,9 +111,6 @@ async function sendMessage(token, data) {
     async function submitHandler(e) {
         e.preventDefault();
         const image = await convertToBase64(selectedFile)
-        console.log(image)
-        console.log(title);
-        console.log(content);
         sendMessage(token, image);
 
 

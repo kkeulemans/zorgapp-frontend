@@ -24,7 +24,6 @@ function HuisartsRegister() {
         })
 
         key = response.data.apikey
-        console.log(key);
     }
 
     async function addAuthority(apikey, username) {
@@ -41,7 +40,7 @@ function HuisartsRegister() {
     }
 
     function onFormSubmit(data) {
-        console.log(data.email);
+
         username = data.email;
         registerUser(data)
         addAuthority(key, username);

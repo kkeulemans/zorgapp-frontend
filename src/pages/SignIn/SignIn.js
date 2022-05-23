@@ -27,7 +27,6 @@ function SignIn(){
                 cancelToken: source.token,
             });
             login(response.data.jwt);
-            console.log(response.data.jwt)
 
         } catch(e) {
             console.error(e);

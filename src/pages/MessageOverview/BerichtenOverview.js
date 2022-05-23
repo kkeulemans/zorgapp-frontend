@@ -24,12 +24,8 @@ function BerichtenOverview() {
                         Authorization: `Bearer ${token}`,
                     },
                 });
-                console.log(response.data)
                 const messageList = response.data;
 
-                const titles = messageList.map((message) => {
-                    return message.title
-                })
                 const ids = messageList.map((message) => {
                     return message.id
                 })
