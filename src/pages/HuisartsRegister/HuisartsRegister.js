@@ -14,16 +14,23 @@ function HuisartsRegister() {
 
 
     async function registerUser(data) {
-        const response = await axios.post("http://localhost:8080/users", {
-            username: data.email,
-            email: data.email,
-            password: data.password,
-            enabled: true,
-            apikey: null,
 
-        })
+        try {
+            const response = await axios.post("http://localhost:8080/users", {
+                username: data.email,
+                email: data.email,
+                password: data.password,
+                enabled: true,
+                apikey: null,
 
-        key = response.data.apikey
+            })
+
+            key = response.data.apikey
+
+        }
+        catch (e){
+            console.log(e);
+        }
     }
 
     async function addAuthority(apikey, username) {

@@ -1,4 +1,4 @@
-import zorgapp from "C:/Users/karli/WebstormProjects/zorgappkeulemans/src/assets/zorgapp.png";
+import zorgapp from "../../assets/zorgapp.png";
 import './HomePage.css'
 import Buttons from "../../components/Buttons/Buttons";
 

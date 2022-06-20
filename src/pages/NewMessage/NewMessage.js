@@ -75,7 +75,9 @@ function NewMessage() {
     }
 
     async function addToReceiver(receiverId, messageId, token) {
-      if(receiverId > 0){ try {
+
+      if(receiverId > 0){
+          try {
             await axios.put(`http://localhost:8080/account/${receiverId}/message/${messageId}`, {}, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -109,10 +111,15 @@ async function sendMessage(token, data) {
     }
 
     async function submitHandler(e) {
-        e.preventDefault();
+        try{
+            e.preventDefault();
+
         const image = await convertToBase64(selectedFile)
         sendMessage(token, image);
-
+    }
+    catch (e){
+            console.log(e);
+    }
 
     }
 

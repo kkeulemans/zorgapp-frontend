@@ -11,6 +11,7 @@ function Register() {
 
 
     async function registerUser(data) {
+        try{
         const response = await axios.post("http://localhost:8080/users", {
             username: data.email,
             email: data.email,
@@ -18,7 +19,11 @@ function Register() {
             enabled: true,
             apikey: null,
 
-        })
+        })}
+
+        catch (e){
+            console.log(e);
+        }
 
     }
 

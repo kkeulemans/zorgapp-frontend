@@ -1,6 +1,6 @@
 import {NavLink} from "react-router-dom";
 import './NavBar.css'
-import logo from "C://Users/karli/WebstormProjects/zorgappkeulemans/src/assets/logo.png"
+import logo from "../../assets/zorgapp.png"
 import {useContext} from "react";
 import  {AuthContext} from "../../context/AuthContext";
 import AuthContextProvider from "../../context/AuthContext";

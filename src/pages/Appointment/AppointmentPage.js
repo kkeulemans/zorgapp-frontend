@@ -26,6 +26,7 @@ function AppointmentPage() {
                 }
             );
         } catch (e) {
+            console.log(e);
         }
     }
 
