@@ -1,0 +1,30 @@
+article {
+    border-style: solid;
+    text-align: left;
+
+}
+
+h3 {
+    text-align: left;
+}
+
+form {
+    text-align: left;
+    display: grid;
+    grid-template-rows: 30px 20px;
+    grid-template-columns: 10px 10px;
+    grid-gap: 40px;
+}
+
+.item1 {
+    grid-area: 1;
+}
+
+.item2 {
+    grid-area: 2;
+}
+
+.item3 {
+    grid-area: 5;
+}
+

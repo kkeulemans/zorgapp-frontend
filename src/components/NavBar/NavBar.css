@@ -1,0 +1,51 @@
+.nav-container {
+    display: flex;
+    grid-template-row: 1px;
+    grid-template-areas: "1 ......2... 4...... ..5 ........6....7";
+    justify-items: left;
+    justify-content: flex-start;
+    margin: 0px;
+    width: 2500px;
+}
+
+a.nav {
+    margin: 50px;
+}
+
+#home {
+    grid-area: 2;
+    list-style: none;
+}
+
+#berichten {
+    grid-area: 3;
+    list-style: none;
+}
+
+#profile {
+    grid-area: 4;
+    list-style: none;
+}
+
+#instellingen {
+    grid-area: 5;
+    list-style: none;
+}
+
+#appointment {
+    grid-area: 6;
+    list-style: none;
+    text-align: left;
+}
+
+.logo {
+    grid-area: 1;
+    width: 4%;
+    text-align: left;
+}
+
+button{
+    grid-area: 7;
+    height: 30px;
+}
+

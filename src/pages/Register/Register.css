@@ -1,6 +1,11 @@
-fieldset{
+fieldset {
     margin: 20px;
 }
-.birthdate{
-    display: block;
+button {
+    margin: 5px;
+    padding: 5px;
+    text-underline-mode: off;
+}
+NavLink{
+    text-underline-mode: off;
 }

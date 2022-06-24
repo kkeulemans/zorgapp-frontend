@@ -1,5 +1,25 @@
-section{
+article {
+    border-width: 2px;
+    margin: 100px;
+    display: grid;
+    text-align: left;
+}
 
-    margin: 200px;
-    padding: 50px;
+textarea {
+    resize: none;
+    font-size: 30px;
+    text-align: center;
+    margin: 5px;
+}
+
+div {
+    margin: 100px;
+}
+
+#file {
+    text-align: left;
+}
+
+input {
+    align-self: center;
 }

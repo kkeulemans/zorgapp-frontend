@@ -1,18 +1,51 @@
-import React, {useState} from "react";
-import logo from './logo.svg';
+import React, {useContext, useState} from "react";
 import './App.css';
-import Message from "./components/message/Message";
-import Button from "./components/Buttons";
-import Input from "./components/Input";
 import Register from "./pages/Register/Register";
-
+import SignIn from "./pages/SignIn/SignIn";
+import {Route, Switch} from 'react-router-dom'
+import Profile from "./pages/Profile/Profile";
+import NavBar from "./components/NavBar/NavBar";
+import AppointmentPage from "./pages/Appointment/AppointmentPage"
+import BerichtenOverview from "./pages/MessageOverview/BerichtenOverview"
+import zorgapp from "./assets/zorgapp.png";
+import HomePage from "./pages/HomePage/HomePage";
+import {AuthContext} from "./context/AuthContext";
+import MessageOverview from "./pages/MessageOverview/BerichtenOverview";
+import NewMessage from "./pages/NewMessage/NewMessage";
+import ClientRegister from "./pages/ClientRegister/ClientRegister";
+import HuisartsRegister from "./pages/HuisartsRegister/HuisartsRegister";
+import Message from "./pages/Message/Message";
+import PrivateRoute from "./components/PrivateRoute";
 function App() {
+    const { isAuth } = useContext(AuthContext);
 
-    return (<>
-        <Register/>
-        <Message/>
-</>
-  );
+    return (
+        <>
+            <Switch>
+                <Route exact path="/">
+                    <HomePage/>
+                </Route>
+                <Route path="/login">
+                <SignIn  />
+                </Route>
+                <Route path="/register">
+                    <Register/>
+                </Route>
+                <Route path="/huisarts">
+                    <HuisartsRegister/>
+                </Route>
+                <Route path="/client">
+                    <ClientRegister/>
+                </Route>
+                <PrivateRoute path="/message" boolean={isAuth} children=<NewMessage/>/>
+                <PrivateRoute exact path="/berichten" boolean={isAuth} children=<MessageOverview/>/>
+                <PrivateRoute path="/messages/:messageId" boolean={isAuth} children=<Message/>/>
+                <PrivateRoute path="/appointment" boolean={isAuth} children=<AppointmentPage/>/>
+                <PrivateRoute path="/profile" boolean={isAuth} children=<Profile/>/>
+
+            </Switch>
+        </>
+    );
 }
 
 export default App;

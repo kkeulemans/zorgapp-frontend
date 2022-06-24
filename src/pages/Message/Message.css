@@ -1,0 +1,13 @@
+section {
+    border: 5px black;
+    margin: 20px;
+    padding: 50px;
+}
+
+p {
+    text-align: left;
+}
+
+img {
+    width: 700px;
+}

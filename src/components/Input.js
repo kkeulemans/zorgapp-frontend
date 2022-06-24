@@ -1,15 +1,24 @@
 import React from "react";
+import {useForm} from "react-hook-form";
+function Input ({action}){
+    const {register, formState: {errors}, handleSubmit, watch} = useForm({
+        mode: 'onChange',
 
-function Input ({name, id, type, text}){
+
+    });
+
 
     return(
-        <label htmlFor={name}>
-            {text}
-            <input
-                type={type}
-                name={name}
-                id={id}
-            />
+        <label htmlFor="firstname-field">Voornaam:
+    <input
+        type="text"
+        id="firstname-field"
+        {...register("firstname", {
+            required: "Voornaam is verplicht",
+        })}
+    />
+    {errors.firstname && <p>{errors.firstname.message}</p>}
+
         </label>
     )
 }
