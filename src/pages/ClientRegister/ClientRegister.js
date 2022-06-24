@@ -1,18 +1,9 @@
 import React, {useState} from "react";
-import Input from "../../components/Input";
-import NavBar from "../../components/NavBar/NavBar";
 import axios from "axios";
 import {useForm} from "react-hook-form";
 
-function ClientRegister(){
+function ClientRegister() {
     let username = '';
-    const [password, setPassword] = useState();
-    const [email, setEmail] = useState();
-    const [address, setAddress] = useState();
-    const [firstName, toggleFirstName] = useState();
-    const [surname, setSurname] = useState();
-    const [birthdate, setBirthdate] = useState();
-    const [sex, setSex] = useState();
     let key = '';
     const {register, formState: {errors}, handleSubmit, watch} = useForm({
         mode: 'onChange',
@@ -31,39 +22,40 @@ function ClientRegister(){
             })
 
             key = response.data.apikey
-        }
-
-        catch (e)
-        {
+        } catch (e) {
             console.log(e);
         }
     }
 
-    async function addAuthority(apikey, username){
-        try{ await axios.post(`http://localhost:8080/users/${username}/authorities`, {
-                authority: "ROLE_USER"
-            },
-            {
-                Authority: apikey })}
-        catch (e){
+    async function addAuthority(apikey, username) {
+        try {
+            await axios.post(`http://localhost:8080/users/${username}/authorities`, {
+                    authority: "ROLE_USER"
+                },
+                {
+                    Authority: apikey
+                })
+        } catch (e) {
             console.log(e);
         }
     }
 
-    async function addAccount (apikey, username){
-        try{ await axios.post(`http://localhost:8080/users/${username}/authorities`, {
-                authority: "ROLE_USER"
-            },
-            {
-                Authority: apikey })}
-        catch (e){
+    async function addAccount(apikey, username) {
+        try {
+            await axios.post(`http://localhost:8080/users/${username}/authorities`, {
+                    authority: "ROLE_USER"
+                },
+                {
+                    Authority: apikey
+                })
+        } catch (e) {
             console.log(e);
         }
 
     }
 
     function onFormSubmit(data) {
-       username = data.email
+        username = data.email
 
 
         registerUser(data)
@@ -158,8 +150,10 @@ function ClientRegister(){
                         id="password-field"
                         {...register("password", {
                             required: "Wachtwoord is verplicht",
-                            minLength: { value: 8,
-                                message: "Wachtwoord moet minimaal 8 characters bevatten"}
+                            minLength: {
+                                value: 8,
+                                message: "Wachtwoord moet minimaal 8 characters bevatten"
+                            }
 
                         })}
                     />
@@ -170,8 +164,10 @@ function ClientRegister(){
                         <input
                             type="checkbox"
                             id="terms-and-conditions-field"
-                            {...register("terms", {required: "Als u niet akkoord" +
-                                    " gaat kunnen wij geen account voor u aanmaken",})}
+                            {...register("terms", {
+                                required: "Als u niet akkoord" +
+                                    " gaat kunnen wij geen account voor u aanmaken",
+                            })}
                         />
                         Ik ga akkoord met de algemene voorwaarden
                     </label>
@@ -186,4 +182,5 @@ function ClientRegister(){
         </>
     )
 }
+
 export default ClientRegister;

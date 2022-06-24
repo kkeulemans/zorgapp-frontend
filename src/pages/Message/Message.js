@@ -1,5 +1,5 @@
 import axios from "axios";
-import {useContext, useEffect, useState} from "react";
+import {useState} from "react";
 import "./Message.css"
 import {useHistory, useParams} from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
@@ -38,7 +38,7 @@ function Message() {
             setTitle(response.data.title)
             setContent(response.data.body)
         } catch (e) {
-
+            console.error(e)
         }
     }
 
@@ -88,23 +88,25 @@ function Message() {
     retrieveAttachment(imaged, token)
 
 
-    function clickHandler(){
+    function clickHandler() {
         history.push("/message/new")
     }
+
     return (
         <>
             <NavBar/>
             <article>
                 <h4 className="message"><u>{title}</u></h4>
                 <p className="message">{content}</p>
-                <li className="message"></li>
-                <img src={image}/>
-                <p></p>
+                <ul>
+                    <li className="message"></li>
+                </ul>
+                <img src={image} alt="foto van client"/>
                 <a href={image} download="" onClick={download(image)}>Download image</a>
 
             </article>
 
-            <button onClick={clickHandler}>Antwoord</button>
+            <button type="submit" onClick={clickHandler}>Antwoord</button>
         </>
     );
 }

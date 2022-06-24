@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import "./HuisartsRegister.css"
+import Input from "../../components/Input";
 
 function HuisartsRegister() {
     let username = ''
@@ -60,38 +61,31 @@ function HuisartsRegister() {
         <>
             <h2>Registratie</h2>
 
-            <form onSubmit={handleSubmit(onFormSubmit)}>
+          <div> <fieldset> <form onSubmit={handleSubmit(onFormSubmit)}>
 
-                <fieldset>
-                    <label htmlFor="firstname-field">Voornaam: </label>
-                    <p></p>
+
+                    <div><label id="firstname" htmlFor="firstname-field">Voornaam:
                     <input
                         type="text"
                         id="firstname-field"
                         {...register("firstname", {
                             required: "Voornaam is verplicht",
                         })}
-                    />
+                    /> </label>
                     {errors.firstname && <p>{errors.firstname.message}</p>}
-                    <p></p>
-                    <label htmlFor="lastname-field">Achternaam: </label>
-                    <p></p>
+          </div>
+                    <label id="lastname" htmlFor="lastname-field">Achternaam:
                     <input
                         type="text"
                         id="lastname-field"
                         {...register("lastname", {
                             required: "Achternaam is verplicht",
                         })}
-                    />
+                    /> </label>
                     {errors.lastname && <p>{errors.lastname.message}</p>}
 
-                    <p></p>
 
-
-                    {errors.birthdate && <p>{errors.birthdate.message}</p>}
-                    <p></p>
-                    <label htmlFor="zipcode-field">Postcode: </label>
-                    <p></p>
+                    <label id="postcode" htmlFor="zipcode-field">Postcode:
                     <input
                         type="text"
                         {...register("zipcode", {
@@ -101,29 +95,23 @@ function HuisartsRegister() {
                                 message: "Ongeldige postcode",
                             }
                         })}
-                    />
+                    /></label>
                     {errors.zipcode && <p>{errors.zipcode.message}</p>}
 
-                    <p></p>
-                    <label htmlFor="address-field">Address:</label>
-                    <p></p>
+                    <label id="address" htmlFor="address-field">Address:
                     <input type="text" id="address-field"
-                           {...register("address", {required: "Adres is verplicht",})}/>
+                           {...register("address", {required: "Adres is verplicht",})}/></label>
                     {errors.address && <p>{errors.address.message}</p>}
-                    <p></p>
-                    <label htmlFor="email-field">Email:</label>
-                    <p></p>
+                    <label id="email" htmlFor="email-field">Email:
                     <input
                         type="text"
                         id="email-field"
                         {...register("email", {
                             required: "Email is verplicht",
                         })}
-                    />
+                    /></label>
                     {errors.email && <p>{errors.email.message}</p>}
-                    <p></p>
-                    <label htmlFor="password-field">Wachtwoord:</label>
-                    <p></p>
+                    <label id="password" htmlFor="password-field">Wachtwoord:
                     <input
                         type="text"
                         id="password-field"
@@ -135,11 +123,9 @@ function HuisartsRegister() {
                             }
 
                         })}
-                    />
+                    /></label>
                     {errors.password && <p>{errors.password.message}</p>}
-                    <p></p>
-                    <label htmlFor="terms-and-conditions-field">
-                        <p></p>
+                    <label id="terms" htmlFor="terms-and-conditions-field">
                         <input
                             type="checkbox"
                             id="terms-and-conditions-field"
@@ -151,13 +137,12 @@ function HuisartsRegister() {
                         Ik ga akkoord met de algemene voorwaarden
                     </label>
                     {errors.terms && <p>{errors.terms.message}</p>}
-                    <p></p>
-                    <button type="submit">
+                    <div id="submit"><button type="submit">
                         Aanmelden
-                    </button>
-                </fieldset>
+                    </button></div>
             </form>
-
+          </fieldset>
+        </div>
         </>
     )
 }

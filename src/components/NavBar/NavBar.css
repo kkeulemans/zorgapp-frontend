@@ -35,13 +35,13 @@ a.nav {
 #appointment {
     grid-area: 6;
     list-style: none;
-    alignment: left;
+    text-align: left;
 }
 
 .logo {
     grid-area: 1;
     width: 4%;
-    alignment: left;
+    text-align: left;
 }
 
 button{

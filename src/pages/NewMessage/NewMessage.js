@@ -76,19 +76,20 @@ function NewMessage() {
 
     async function addToReceiver(receiverId, messageId, token) {
 
-      if(receiverId > 0){
-          try {
-            await axios.put(`http://localhost:8080/account/${receiverId}/message/${messageId}`, {}, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            })
-        } catch (e) {
-            console.error(e);
+        if (receiverId > 0) {
+            try {
+                await axios.put(`http://localhost:8080/account/${receiverId}/message/${messageId}`, {}, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                })
+            } catch (e) {
+                console.error(e);
+            }
         }
-    }}
+    }
 
-async function sendMessage(token, data) {
+    async function sendMessage(token, data) {
         try {
             const response = await axios.post("http://localhost:8080/messages/new", {
                 title: title,
@@ -111,15 +112,14 @@ async function sendMessage(token, data) {
     }
 
     async function submitHandler(e) {
-        try{
+        try {
             e.preventDefault();
 
-        const image = await convertToBase64(selectedFile)
-        sendMessage(token, image);
-    }
-    catch (e){
+            const image = await convertToBase64(selectedFile)
+            sendMessage(token, image);
+        } catch (e) {
             console.log(e);
-    }
+        }
 
     }
 

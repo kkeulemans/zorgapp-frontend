@@ -9,36 +9,12 @@ import Buttons from "../../components/Buttons/Buttons";
 function Register() {
 
 
-
-    async function registerUser(data) {
-        try{
-        const response = await axios.post("http://localhost:8080/users", {
-            username: data.email,
-            email: data.email,
-            password: data.password,
-            enabled: true,
-            apikey: null,
-
-        })}
-
-        catch (e){
-            console.log(e);
-        }
-
-    }
-
-    function onFormSubmit(data) {
-        registerUser(data)
-
-    }
-
-
     return (
         <>
             <h2>Registratie</h2>
             <section>
-            <Buttons type="text" text="Ik ben huisarts" path="/huisarts"></Buttons>
-            <Buttons type="text" text="Ik ben client" path="/client"></Buttons>
+            <Buttons type="button" text="Ik ben huisarts" path="/huisarts"></Buttons>
+            <Buttons type="button" text="Ik ben client" path="/client"></Buttons>
         </section>
         </>
     )

@@ -65,22 +65,21 @@ function AppointmentPage() {
             <article>
                 <h3>Afspraak Maken</h3>
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="appointment-date-field">
+                    <div className="item1"><label htmlFor="appointment-date-field">
                         <p>  Datum </p>
                         <input name="appointment-date" id="appointment-date"
                                             type="date"
                                             value={date}
                                             onChange={(e) => setDate(e.target.value)}/>
                     </label>
-                    <p></p>
-
-                    <p>Tijd</p>
-                    <label htmlFor="appointment-time"> <input name="appointment-time" id="appointment-time" type="time"
+        </div>
+                    <div className="item2"><label htmlFor="appointment-time"> <p>Tijd</p>
+                     <input name="appointment-time" id="appointment-time" type="time"
                                                               value={time}
                                                               onChange={(e) => setTime(e.target.value)}
-                    ></input></label>
-                    <p>
-                    <button type="submit">Bevestig</button></p>
+                    /></label>
+        </div>
+                   <div className="item3"> <button id="submit" type="submit">Bevestig</button></div>
                 </form>
 
             </article>

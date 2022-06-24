@@ -2,13 +2,14 @@ article {
     border-width: 2px;
     margin: 100px;
     display: grid;
-    alignment: left;
+    text-align: left;
 }
 
 textarea {
     resize: none;
-    fontsize: 30px;
-    alignment: center;
+    font-size: 30px;
+    text-align: center;
+    margin: 5px;
 }
 
 div {
@@ -16,7 +17,7 @@ div {
 }
 
 #file {
-    alignment: left;
+    text-align: left;
 }
 
 input {

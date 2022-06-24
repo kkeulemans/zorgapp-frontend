@@ -1,7 +1,7 @@
 article {
     border-style: solid;
-    margin: 10px;
-    text-align: right;
+    text-align: left;
+
 }
 
 h3 {
@@ -10,13 +10,21 @@ h3 {
 
 form {
     text-align: left;
-
+    display: grid;
+    grid-template-rows: 30px 20px;
+    grid-template-columns: 10px 10px;
+    grid-gap: 40px;
 }
 
-div {
-    margin: 10px;
+.item1 {
+    grid-area: 1;
 }
 
-p {
-    text-align: right;
+.item2 {
+    grid-area: 2;
 }
+
+.item3 {
+    grid-area: 5;
+}
+

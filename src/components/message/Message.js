@@ -9,16 +9,15 @@ function Message({submitHandler, title, content, placeholder, setContent, setTit
 
             <article>
                 <form onSubmit={submitHandler}>
-                    <p>
-                       Naar: <input type="text" value={receiver} onChange={setReceiver} /></p>
-                        <p>
-                        <textarea id="message-title" value={title} placeholder="Bericht Titel" cols="80" rows="4"
-                                  onChange={setTitle}/></p>
 
-                    <p>       <textarea id="message-content" cols="80" rows="50" placeholder={placeholder}
-                                        value={content} onChange={setContent}/></p>
+                       Naar: <input type="text" value={receiver} onChange={setReceiver} />
+
+                        <textarea id="message-title" value={title} placeholder="Bericht Titel" cols="60" rows="4"
+                                  onChange={setTitle}/>
+
+                          <textarea id="message-content" cols="60" rows="50" placeholder={placeholder}
+                                        value={content} onChange={setContent}/>
                         <input type="file" id="file" onChange={setFile}/>
-                        <p></p>
                         <button type="submit">Stuur</button>
 
 

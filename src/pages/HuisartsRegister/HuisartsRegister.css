@@ -1,4 +1,46 @@
+article {
+    border-style: solid;
+    text-align: left;
+
+}
 button{
     background-color: deepskyblue;
     border-color: deepskyblue;
 }
+
+form{
+    display: grid;
+    grid-template-rows: 30px 20px 30px 20px 30px 20px 30px 20px 20px;
+    grid-template-columns: 10px 10px;
+    grid-gap: 40px;
+}
+
+#firstname{
+    grid-area: 1;
+}
+#firstname-field{
+    grid-area: 2;
+}
+
+#lastname{
+    grid-area: 3;
+}
+
+#postcode{
+    grid-area: 4;
+}
+#address{
+    grid-area: 5;
+}
+#email{
+    grid-area: 6;
+}
+#password{
+    grid-area: 7;
+}
+#terms{
+    grid-area:8;
+}
+submit{
+     grid-area: 9;
+ }

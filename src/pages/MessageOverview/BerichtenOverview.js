@@ -49,7 +49,7 @@ function BerichtenOverview() {
             <article id="overview">
 
                     {titles}
-                <Buttons text="Nieuw Bericht" path={"/message"}/>
+                <Buttons text="Nieuw Bericht" path={"/message"} type="button"/>
             </article>
         </>)
 }

@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import {NavLink, useHistory} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import zorgapp from "../../assets/zorgapp.png"
 import {AuthContext} from "../../context/AuthContext";
 import axios from "axios";
@@ -65,7 +65,6 @@ function SignIn(){
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </label>
-                <p></p>
                 <button
                     type="submit"
                     className="form-button">Login</button>
