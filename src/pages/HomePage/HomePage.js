@@ -1,7 +1,6 @@
 import zorgapp from "../../assets/zorgapp.png";
 import './HomePage.css'
 import Buttons from "../../components/Buttons/Buttons";
-import jwt_decode from "jwt-decode";
 
 function HomePage() {
 

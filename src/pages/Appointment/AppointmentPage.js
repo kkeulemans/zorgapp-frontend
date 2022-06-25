@@ -1,5 +1,5 @@
 import NavBar from "../../components/NavBar/NavBar";
-import Input from "../../components/Input";
+import Form from "../../components/Form/Form";
 import React, {useEffect, useState} from "react";
 import "./AppointmentPage.css"
 import axios from "axios";

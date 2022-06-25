@@ -1,0 +1,103 @@
+article {
+    border-style: solid;
+    text-align: left;
+
+}
+
+button {
+    background-color: deepskyblue;
+    border-color: deepskyblue;
+}
+
+form {
+    display: grid;
+    grid-template-rows: 500px 20px 20px 20px 20px 20px 20px 20px 20px;
+    grid-template-columns: 1000px;
+    grid-gap: 10px;
+}
+
+#firstname {
+    grid-area: 1;
+    height: 10px;
+}
+
+#error-firstname {
+    grid-area: 2;
+    width: 500px;
+    height: 1px;
+}
+
+#lastname {
+    grid-area: 3;
+    height: 1px;
+}
+
+#error-lastname {
+    grid-area: 4;
+    width: 500px;
+    height: 1px;
+}
+#huisarts-info {
+    grid-area: 5;
+    height: 1px;
+}
+
+#birthdate {
+    grid-area: 5;
+    height: 10px;
+}
+
+#error-birthday {
+    grid-area: 6;
+    width: 500px;
+}
+
+#postcode {
+    grid-area: 7;
+    height: 10px;
+}
+
+#error-zipcode{
+    grid-area: 8;
+    width: 500px;
+}
+
+#address {
+    grid-area: 9;
+}
+
+#address-message {
+    grid-area: 10;
+    width: 500px;
+    height: 1px;
+}
+
+#email {
+    grid-area: 12;
+    height: 10px;
+}
+#email-error {
+    grid-area: 13;
+    width: 500px;
+    height: 1px;
+}
+
+#password {
+    grid-area: 14;
+}
+
+#error-password{
+    grid-area: 15;
+    width: 500px;
+    height: 1px;
+}
+
+#terms {
+    grid-area: 17;
+    width: 500px;
+    height: 20px;
+}
+
+#register-button {
+    grid-area: 18;
+}
