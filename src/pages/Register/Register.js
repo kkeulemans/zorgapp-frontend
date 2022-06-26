@@ -14,12 +14,12 @@ function Register() {
     },[userType])
     return (
         <>
-            <h2>Registratie</h2>
-
+            <h2 id="page-title">Registratie</h2>
+            <section id="user-choice">
             <input type="radio" id="Huisarts" name="usertype" onClick={(e) => setUserType("Huisarts")}></input>
-            <label htmlFor="Huisarts">Huisarts</label>
+            <label htmlFor="Huisarts">Huisarts </label>
             <input type="radio" id="Client" name="usertype" onClick={(e) => setUserType("Client")} ></input>
-            <label htmlFor="Client">Client</label>
+            <label htmlFor="Client">Client</label></section>
             { userType === "huisarts" ? <Form userType="huisarts"/>: <Form userType="client"></Form> }
         </>
     )

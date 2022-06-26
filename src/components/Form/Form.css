@@ -1,50 +1,42 @@
-article {
+#registration{
     border-style: solid;
     text-align: left;
-
+    margin: 100px;
 }
+
 
 button {
-    background-color: deepskyblue;
-    border-color: deepskyblue;
+    background-color: rgba(131, 206, 219, 1);
+    border-color: rgba(131, 206, 219, 1);
 }
 
-form {
+#form {
     display: grid;
-    grid-template-rows: 500px 20px 20px 20px 20px 20px 20px 20px 20px;
-    grid-template-columns: 1000px;
+    margin: 100px;
     grid-gap: 10px;
 }
 
 #firstname {
     grid-area: 1;
-    height: 10px;
+
 }
 
 #error-firstname {
     grid-area: 2;
     width: 500px;
-    height: 1px;
 }
 
 #lastname {
-    grid-area: 3;
-    height: 1px;
+    grid-area: 2;
 }
 
 #error-lastname {
     grid-area: 4;
     width: 500px;
-    height: 1px;
-}
-#huisarts-info {
-    grid-area: 5;
-    height: 1px;
 }
 
-#birthdate {
+#birthdate-field {
     grid-area: 5;
-    height: 10px;
 }
 
 #error-birthday {
@@ -52,37 +44,44 @@ form {
     width: 500px;
 }
 
-#postcode {
+#sex-field {
     grid-area: 7;
-    height: 10px;
 }
 
-#error-zipcode{
+#error-sex {
     grid-area: 8;
     width: 500px;
 }
 
-#address {
+#postcode {
     grid-area: 9;
+    height: 10px;
+}
+
+#error-zipcode{
+    grid-area: 10;
+    width: 500px;
+}
+
+#address-field {
+    grid-area: 11;
 }
 
 #address-message {
-    grid-area: 10;
+    grid-area: 12;
     width: 500px;
-    height: 1px;
 }
 
-#email {
-    grid-area: 12;
-    height: 10px;
+#email-field {
+    grid-area: 13;
 }
 #email-error {
-    grid-area: 13;
+    grid-area: 14;
     width: 500px;
     height: 1px;
 }
 
-#password {
+#password-field {
     grid-area: 14;
 }
 
@@ -92,10 +91,9 @@ form {
     height: 1px;
 }
 
-#terms {
+#terms-and-conditions-field {
     grid-area: 17;
-    width: 500px;
-    height: 20px;
+    margin: 10px;
 }
 
 #register-button {

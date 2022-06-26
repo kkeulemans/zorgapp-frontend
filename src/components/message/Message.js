@@ -7,21 +7,21 @@ function Message({submitHandler, title, content, placeholder, setContent, setTit
     return (
         <>
 
-            <article>
-                <form onSubmit={submitHandler}>
+            <article id= "message-container">
+                <form id="message" onSubmit={submitHandler}>
 
-                       Naar: <input type="text" value={receiver} onChange={setReceiver} />
+                    <p id="receiver">Naar: <input type="text" value={receiver} onChange={setReceiver} /></p>
 
-                        <textarea id="message-title" value={title} placeholder="Bericht Titel" cols="60" rows="4"
+                      <section id = "body">  <textarea id="message-title" value={title} placeholder="Bericht Titel" cols="50" rows="1"
                                   onChange={setTitle}/>
 
-                          <textarea id="message-content" cols="60" rows="50" placeholder={placeholder}
-                                        value={content} onChange={setContent}/>
-                        <input type="file" id="file" onChange={setFile}/>
-                        <button type="submit">Stuur</button>
+                          <textarea id="message-content" cols="50" rows="20" placeholder={placeholder}
+                                    value={content} onChange={setContent}/></section>
+                        <div id="upload"><input type="file" id="file" onChange={setFile}/></div>
+                      <div id="send"> <button type="submit">Stuur</button></div>
 
 
-                </form>
+            </form>
 
             </article>
 

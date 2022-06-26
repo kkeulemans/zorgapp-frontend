@@ -1,9 +1,9 @@
 import React, {useContext, useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
-import zorgapp from "../../assets/zorgapp.png"
+import zorgapp from "../../assets/zorgapp.png";
 import {AuthContext} from "../../context/AuthContext";
 import axios from "axios";
-import './SignIn.css'
+import './SignIn.css';
 
 function SignIn(){
     const source = axios.CancelToken.source();
@@ -40,22 +40,21 @@ function SignIn(){
     }
         return(
         <>
-        <article>
+            <div id="container">
+        <article id="signIn">
 
             <img id="logo" src={zorgapp} alt="zorgapp logo"/>
-            <div>
-            <form onSubmit={nextPage}>
-                <label htmlFor="username-field">
+            <form id="login" onSubmit={nextPage}>
+                <label id="username" htmlFor="username-field">
                     <input
                         type="text"
                         id="username-field"
                         value={username}
-                        placeholder="Username"
+                        placeholder="Email"
                         onChange={(e) => setUsername(e.target.value)}
                     />
                 </label>
-                <p></p>
-                <label htmlFor="password-field">
+                <label id="password" htmlFor="password-field">
                     <input
                         type="password"
                         id="password-field"
@@ -65,15 +64,15 @@ function SignIn(){
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </label>
-                <button
-                    type="submit"
-                    className="form-button">Login</button>
-            </form></div>
+                <div id="button-container"><button
+                    id="submit-button" type="submit"
+                    className="form-button">Login</button></div>
 
+            </form>
             <NavLink id="register" to="/register">Registreren</NavLink>
         </article>
 
-
+        </div>
 
         </>
     );

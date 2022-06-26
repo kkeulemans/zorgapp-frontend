@@ -3,8 +3,8 @@ import './NavBar.css'
 import logo from "../../assets/zorgapp.png"
 import {useContext} from "react";
 import  {AuthContext} from "../../context/AuthContext";
-
-function NavBar({authenticated, handleClick}) {
+import applogo from "../../assets/logo.png"
+function NavBar() {
 const { logout } = useContext(AuthContext);
     return (
         <>
@@ -12,7 +12,7 @@ const { logout } = useContext(AuthContext);
 
             <header className="nav-container">
 
-                <img className="logo" src={logo} alt="zorgapp favicon"/>
+                <img className="logo" src={applogo} alt="zorgapp favicon"/>
                 <h4><NavLink className="nav" exact to="/" activeClassName="active-link">Home</NavLink></h4>
                 <h4><NavLink className="nav" to="/berichten" activeClassName="active-link">Berichten</NavLink></h4>
                 <h4><NavLink className="nav" to="/profile" activeClassName="active-link">Profiel</NavLink></h4>
@@ -20,7 +20,7 @@ const { logout } = useContext(AuthContext);
                 </h4>
                 <h4><NavLink className="nav" exact to="/appointment" activeClassName="active-link">Afspraak
                     Maken</NavLink></h4>
-                    <button onClick={logout}>Log uit</button>
+                    <button type="button" onClick={logout}>Log uit</button>
 
             </header>
         </>

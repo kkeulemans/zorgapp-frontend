@@ -1,5 +1,4 @@
 import NavBar from "../../components/NavBar/NavBar";
-import Form from "../../components/Form/Form";
 import React, {useEffect, useState} from "react";
 import "./AppointmentPage.css"
 import axios from "axios";
@@ -14,7 +13,7 @@ function AppointmentPage() {
         return function cleanup() {
             source.cancel();
         }
-    }, []);
+    }, [source]);
 
     async function addToAccount(token, id, appointmentId) {
         try {
@@ -62,10 +61,10 @@ function AppointmentPage() {
         <>
         <NavBar/>
         <div>
-            <article>
+            <article id="planner">
                 <h3>Afspraak Maken</h3>
-                <form onSubmit={handleSubmit}>
-                    <div className="item1"><label htmlFor="appointment-date-field">
+                <form id="appointment" onSubmit={handleSubmit}>
+                    <div className="item1"><label id="date" htmlFor="appointment-date-field">
                         <p>  Datum </p>
                         <input name="appointment-date" id="appointment-date"
                                             type="date"
@@ -73,7 +72,7 @@ function AppointmentPage() {
                                             onChange={(e) => setDate(e.target.value)}/>
                     </label>
         </div>
-                    <div className="item2"><label htmlFor="appointment-time"> <p>Tijd</p>
+                    <div className="item2"><label id="time" htmlFor="appointment-time"> <p>Tijd</p>
                      <input name="appointment-time" id="appointment-time" type="time"
                                                               value={time}
                                                               onChange={(e) => setTime(e.target.value)}

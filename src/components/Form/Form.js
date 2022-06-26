@@ -11,6 +11,7 @@ function Form({userType}) {
     const [lastName, setLastName] = useState('');
     const [postcode, setPostcode] = useState('');
     const [address, setAddress] = useState('');
+    const [sex, setSex] = useState('');
     const {register, formState: {errors}, handleSubmit} = useForm({
         mode: 'onChange',
     });
@@ -60,13 +61,14 @@ function Form({userType}) {
     }
 
     async function addAccount(apikey, username, firstName,
-                              lastName,postcode,address) {
+                              lastName,postcode,address, sex) {
         try {
             const response = await axios.post(`http://localhost:8080/account/new`, {
                     firstName: firstName,
                     lastName: lastName,
                     username: username,
-                    address: address + " " + postcode
+                    address: address + " " + postcode,
+                    sex: sex
                 })
 
             account = response.data.id;
@@ -99,6 +101,7 @@ function Form({userType}) {
         setLastName(data.lastname);
         setPostcode(data.zipcode);
         setAddress(data.address);
+        setSex(data.sex);
         console.log(address)
         console.log(lastName);
         registerUser(data)
@@ -116,11 +119,11 @@ function Form({userType}) {
 
     return (
         <>
-            <article>
-            <form onSubmit={handleSubmit(onFormSubmit)}>
+            <article id="registration">
+            <form id="form" onSubmit={handleSubmit(onFormSubmit)}>
 
 
-                    <label id="firstname" htmlFor="firstname-field">Voornaam:
+                <label id="firstname" htmlFor="firstname-field"><p>Voornaam:</p>
                         <input
                             type="text"
                             id="firstname-field"
@@ -130,7 +133,7 @@ function Form({userType}) {
                         />
                         {errors.firstname && <p id="error-firstname">{errors.firstname.message}</p>}
                     </label>
-                    <label id="lastname" htmlFor="lastname-field">Achternaam:
+                <label id="lastname" htmlFor="lastname-field"><p>Achternaam:</p>
                         <input
                             type="text"
                             id="lastname-field"
@@ -141,7 +144,7 @@ function Form({userType}) {
                         {errors.lastname && <p id= "error-lastname">{errors.lastname.message}</p>}
                     </label>
 
-                    {userType === "client"  ?  <label id="birthdate" htmlFor="birthdate-field">Geboortedatum:
+                {userType === "client"  ?  <label id="birthdate" htmlFor="birthdate-field"><p>Geboortedatum:</p>
                         <input
                             type="date"
                             id="birthdate-field"
@@ -153,26 +156,20 @@ function Form({userType}) {
                                 }
                             })}
                         />
-                        {errors.birthdate && <p id="error-birthday">{errors.birthdate.message}</p>}</label> : <p id="huisarts-info">Praktijk</p>}
-                    <label id="postcode" htmlFor="zipcode-field">Postcode:
-                        <input
-                            type="text"
-                            {...register("zipcode", {
-                                required: "Postcode is verplicht",
-                                pattern: {
-                                    value: /^[0-9]{4}[a-zA-Z]{2}$/,
-                                    message: "Ongeldige postcode",
-                                }
-                            })}
-                        />
-                        {errors.zipcode && <p id="error-zipcode">{errors.zipcode.message}</p>}
-                    </label>
-                    <label id="address" htmlFor="address-field">Address:
+                        {errors.birthdate && <p id="error-birthday">{errors.birthdate.message}</p>}</label> : null}
+                {userType === "client"  ? <label id="sex" htmlFor="sex-field"> <p>Geslacht:</p>
+                <input
+                type="string"
+                id="sex-field"
+                    {...register("sex", {required: "Geslacht is verplicht"})}/>
+                {errors.sex && <p id="error-sex"> {errors.sex.message}</p>}</label> : null}
+
+                <label id="address" htmlFor="address-field"><p>Address:</p>
                         <input type="text" id="address-field"
                                {...register("address", {required: "Adres is verplicht",})}/>
                         {errors.address && <p id="address-message">{errors.address.message}</p>}
                     </label>
-                    <label id="email" htmlFor="email-field">Email:
+                <label id="email" htmlFor="email-field"><p>Email:</p>
                         <input
                             type="text"
                             id="email-field"
@@ -182,7 +179,7 @@ function Form({userType}) {
                         />
                         {errors.email && <p id="email-error">{errors.email.message}</p>}
                     </label>
-                    <label id="password" htmlFor="password-field">Wachtwoord:
+                <label id="password-position" htmlFor="password-field"><p>Wachtwoord:</p>
                         <input
                             type="text"
                             id="password-field"
@@ -196,8 +193,8 @@ function Form({userType}) {
                             })}
                         />
                         {errors.password && <p id="error-password">{errors.password.message}</p>}
-
                     </label>
+
                     <label id="terms" htmlFor="terms-and-conditions-field">
                         <input
                             type="checkbox"
@@ -210,8 +207,8 @@ function Form({userType}) {
 
                     {errors.terms && <p>{errors.terms.message}</p>}
                     </label>
-                    <p id="register-button">
-                    <button  type="submit">
+                    <p>
+                    <button id="register-button"  type="submit">
                         Aanmelden
                     </button></p>
             </form>

@@ -4,10 +4,7 @@ import Register from "./pages/Register/Register";
 import SignIn from "./pages/SignIn/SignIn";
 import {Route, Switch} from 'react-router-dom'
 import Profile from "./pages/Profile/Profile";
-import NavBar from "./components/NavBar/NavBar";
 import AppointmentPage from "./pages/Appointment/AppointmentPage"
-import BerichtenOverview from "./pages/MessageOverview/BerichtenOverview"
-import zorgapp from "./assets/zorgapp.png";
 import HomePage from "./pages/HomePage/HomePage";
 import {AuthContext} from "./context/AuthContext";
 import MessageOverview from "./pages/MessageOverview/BerichtenOverview";
@@ -24,7 +21,7 @@ function App() {
                     <HomePage/>
                 </Route>
                 <Route path="/login">
-                <SignIn  />
+                <SignIn/>
                 </Route>
                 <Route path="/register">
                     <Register/>

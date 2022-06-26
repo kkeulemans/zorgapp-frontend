@@ -1,19 +1,23 @@
-article {
+#planner {
     border-style: solid;
     text-align: left;
+    height: 500px;
+    width: 900px;
+    margin: 100px;
 
 }
 
 h3 {
-    text-align: left;
+    text-align: center;
 }
 
-form {
-    text-align: left;
+#appointment {
+    align-self: center;
     display: grid;
     grid-template-rows: 30px 20px;
     grid-template-columns: 10px 10px;
     grid-gap: 40px;
+    margin: 100px;
 }
 
 .item1 {
@@ -25,6 +29,6 @@ form {
 }
 
 .item3 {
-    grid-area: 5;
+    grid-area: 4;
 }
 

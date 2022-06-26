@@ -1,25 +1,40 @@
-article {
+#message-container {
     border-width: 2px;
     margin: 100px;
-    display: grid;
     text-align: left;
+    height: 1000px;
+    width: 1200px;
 }
 
+#message {
+    display: grid;
+}
 textarea {
     resize: none;
     font-size: 30px;
     text-align: center;
     margin: 5px;
 }
-
-div {
-    margin: 100px;
+#receiver {
+    grid-area: 1;
+    width: 500px;
+    height: 2px;
 }
+#body {
+    grid-area: 2;
+    width: 1000px;
+    height: 900px;
+}
+
 
 #file {
     text-align: left;
 }
 
-input {
-    align-self: center;
+#upload {
+    grid-area: 23;
+}
+
+#send {
+    grid-area: 24;
 }

@@ -1,10 +1,10 @@
 .nav-container {
     display: flex;
-    grid-template-row: 1px;
-    grid-template-areas: "1 ......2... 4...... ..5 ........6....7";
+    grid-template-row: 2px;
+    grid-template-areas: "1 ......2... 4...... ..5 ........6.......7";
     justify-items: left;
     justify-content: flex-start;
-    margin: 0px;
+    margin: 30px;
     width: 2500px;
 }
 

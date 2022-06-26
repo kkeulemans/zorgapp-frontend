@@ -42,7 +42,6 @@ function Profile() {
                     <p>Geslacht: {sex} </p>
                     <p>Geboortedatum: {birthdate}</p>
                     <p>Adres: {address}</p>
-                    <p></p>
                 </fieldset>
             </div>
         </>

@@ -1,40 +1,56 @@
-article{
-    display: grid;
-    flex-direction: row;
+#signIn {
     border-color: #282c34;
+    border-style: solid;
+    height: 600px;
+    width: 900px;
+    display: grid;
+    align-content: center;
+
+
 }
-h3{
-    text-align: center;
-    order: 1;
+
+#container {
+    margin: 200px;
+}
+
+
+#login {
+    display: grid;
+    grid-gap: 10px;
+    margin: 100px;
 }
 
 #logo {
-    text-align: center;
-    width: 100%;
     flex-grow: 1;
     flex-shrink: 1;
-    order: 2;
-}
-form{
-    order: 3;
-    border-color: #282c34;
-    justify-content: stretch;
+    grid-area: 1;
 }
 
-Button {
-    order: 4;
+#username-field {
+    grid-area: 2;
+    align-self: center;
+}
+
+#password-field {
+    align-items: center;
+    grid-area: 3;
+}
+
+#submit-button {
+    grid-area: 4;
+    align-self: center;
+
+}
+
+#button-container {
+     margin: 10px;
 }
 
 #register {
     text-align: left;
-    order: 5;
+    grid-area: 10;
+    margin: 10px;
     text-decoration-color: #282c34;
-    margin: 0px;
-    padding: 0px;
     text-underline: #282c34;
 }
 
-div {
-    order: 2;
-    align-content: center;
-}
